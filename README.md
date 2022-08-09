@@ -16,6 +16,15 @@
 -Registration with user validation, and with Google.<br>
 -Add, edit and modify comments. <br>
 -Database working with MongoDB.<br>
+-Some technologies used: joi, jwt, nodemailer, passport, axios, redux, tailwind, mui, heroku. <br>
+
+<hr>
+<p align="left">Algunas funciones del proyecto: </p>
+<p align="left">
+-Registro con validación de usuarios, y con Google. <br>
+-Añadir, editar y modificar comentarios. <br>
+-Base de datos trabajando con MongoDB. <br>
+-Algunas tecnologías utilizadas: joi, jwt, nodemailer, passport, axios, redux, tailwind, mui, heroku. <br>
 
 </p>
-<br>
+
