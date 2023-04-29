@@ -5,7 +5,7 @@ import userActions from '../redux/actions/userActions'
 import toast from 'react-hot-toast';
 
 
-export default function GoogleSignUp({ country } ) {
+export default function GoogleSignUp({ country }) {
 
     const dispatch = useDispatch();
 
@@ -32,13 +32,13 @@ export default function GoogleSignUp({ country } ) {
 
         res.data.success ?
             toast.success(`${res.data.message}`, { duration: 4500 })
-            : toast.error(`${res.data.message}`, { duration: 4500 })       
+            : toast.error(`${res.data.message}`, { duration: 4500 })
     }
 
     useEffect(() => {
         /* global google */
         google.accounts.id.initialize({
-            client_id: '60710291903-kihnjrqu01bho3nmkhnfhu9p8595svno.apps.googleusercontent.com', // VARIABLE DE ENTORNO
+            client_id: process.env.REACT_APP_GOOGLE_CLIENTID,
             callback: handleCallbackResponse
         });
 

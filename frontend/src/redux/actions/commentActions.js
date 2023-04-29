@@ -1,4 +1,4 @@
-import axios from "axios";
+import { mytineraryDB } from "../../api/config";
 
 const commentActions = {
 
@@ -10,30 +10,15 @@ const commentActions = {
 
             if (data.comment !== '') {
 
-                // const res = await axios.post('http://localhost:8000/api/tineraries/comment', { data }, {
-                //     headers: {
-                //         'Authorization': 'Bearer ' + token
-                //     }
-                // })
-                const res = await axios.post('https://mytinerary-backend-aybar.herokuapp.com/api/tineraries/comment', { data }, {
+                const res = await mytineraryDB.post('/tineraries/comment', { data }, {
                     headers: {
                         'Authorization': 'Bearer ' + token
                     }
                 })
-                
+
                 return res
             }
 
-            // else {
-            //     dispatch({
-            //         type: 'message',
-            //         payload: {
-            //             view: true,
-            //             message: 'ingresa un comentario para guardarlo',
-            //             success: false
-            //         }
-            //     })
-            // }
         }
     },
 
@@ -43,19 +28,12 @@ const commentActions = {
 
         return async (dispatch, getState) => {
 
-            // const res = await axios.post(`http://localhost:8000/api/tineraries/comment/${id}`, {}, {
-            //     headers: {
-            //         'Authorization': 'Bearer ' + token
-            //     }
-
-            // })
-            const res = await axios.post(`https://mytinerary-backend-aybar.herokuapp.com/api/tineraries/comment/${id}`, {}, {
+            const res = await mytineraryDB.post(`/tineraries/comment/${id}`, {}, {
                 headers: {
                     'Authorization': 'Bearer ' + token
                 }
-
             })
-            
+
             return res
         }
     },
@@ -66,17 +44,12 @@ const commentActions = {
 
         return async (dispatch, getState) => {
 
-            // const res = await axios.put('http://localhost:8000/api/tineraries/comment', { data }, {
-            //     headers: {
-            //         'Authorization': 'Bearer ' + token
-            //     }
-            // })
-            const res = await axios.put('https://mytinerary-backend-aybar.herokuapp.com/api/tineraries/comment', { data }, {
+            const res = await mytineraryDB.put('/tineraries/comment', { data }, {
                 headers: {
                     'Authorization': 'Bearer ' + token
                 }
             })
-            
+
             return res
         }
     },

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
 
 const Cities = (props) => {
-    
+
     const [search, setSearch] = useState('');
 
     const searching = (search) => {

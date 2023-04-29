@@ -1,5 +1,4 @@
-import axios from "axios";
-// import { dispatch } from "react-hot-toast/dist/core/store";
+import { mytineraryDB } from "../../api/config";
 
 const userActions = {
 
@@ -10,9 +9,7 @@ const userActions = {
 
             try {
 
-                // const res = await axios.post('http://localhost:8000/api/signup', data);
-                const res = await axios.post('https://mytinerary-backend-aybar.herokuapp.com/api/signup', data);
-                // console.log(res)
+                const res = await mytineraryDB.post('/signup', data)
 
                 dispatch({
                     type: 'MESSAGE',
@@ -35,10 +32,8 @@ const userActions = {
 
             try {
 
-                // const res = await axios.post('http://localhost:8000/api/signin', data)
-                const res = await axios.post('https://mytinerary-backend-aybar.herokuapp.com/api/signin', data)
+                const res = await mytineraryDB.post('/signin', data)
 
-                // console.log(res)
 
                 if (res.data.success) { // para no generar algun tonken al pepe
 
@@ -58,12 +53,10 @@ const userActions = {
         }
     },
 
-    signOutUser: (data) => {
+    signOutUser: () => {
 
         return async (dispatch, getState) => {
 
-            // const res = axios.post('http://localhost:8000/api/signout', data)
-            // console.log(res)
             localStorage.removeItem('token');
 
             dispatch({
@@ -78,40 +71,20 @@ const userActions = {
 
         return async (dispatch, getState) => {
 
-            // console.log(token)
 
-            // const res = await axios.get('http://localhost:8000/api/signinToken', {
-
-            //     headers: {
-            //         'Authorization': 'Bearer ' + token
-            //     }
-
-            // })
-            const res = await axios.get('https://mytinerary-backend-aybar.herokuapp.com/api/signinToken', {
-
+            const res = await mytineraryDB.post('/signinToken', {
                 headers: {
                     'Authorization': 'Bearer ' + token
                 }
-
             })
-
-            // console.log(res)
 
             if (res.data.success) {
 
-                dispatch({ 
-                    type: 'USER', 
-                    payload: res.data.response 
+                dispatch({
+                    type: 'USER',
+                    payload: res.data.response
                 });
 
-                // dispatch({
-                //     type: 'MESSAGE',
-                //     payload: {
-                //         view: true,
-                //         message: res.data.message,
-                //         success: res.data.success
-                //     }
-                // });
 
             } else {
                 localStorage.removeItem('token')

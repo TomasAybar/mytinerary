@@ -36,7 +36,7 @@ function App(props) {
 
     // eslint-disable-next-line
 
-  },[])
+  }, [])
 
   // console.log(props.user)
   return (

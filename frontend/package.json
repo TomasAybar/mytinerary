@@ -34,8 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "serve -s build",
-    "heroku-postbuild": "npm run build"
+    "start": "serve -s build"
   },
   "eslintConfig": {
     "extends": [
@@ -43,12 +42,10 @@
       "react-app/jest"
     ]
   },
-
   "engines": {
     "node": "16.x",
     "npm": "6.x"
   },
-  
   "browserslist": {
     "production": [
       ">0.2%",

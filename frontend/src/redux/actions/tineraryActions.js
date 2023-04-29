@@ -1,4 +1,4 @@
-import axios from "axios";
+import { mytineraryDB } from "../../api/config";
 
 const tineraryActions = {
 
@@ -6,8 +6,9 @@ const tineraryActions = {
     getTineraries: () => {
 
         return async (dispatch, getState) => { // es asincrona porq necesita esperar la respuesta del axios
-            // const res = await axios.get('http://localhost:8000/api/tineraries')
-            const res = await axios.get('https://mytinerary-backend-aybar.herokuapp.com/api/tineraries')
+
+            const res = await mytineraryDB.get('/tineraries')
+
             dispatch({ type: 'GET_TINERARIES', payload: res.data.response }) // envia el type y el payload(la carga del axios)
         }
 
@@ -16,9 +17,9 @@ const tineraryActions = {
     getOneTinerary: (id) => {
 
         return async (dispatch, getState) => {
-            // const res = await axios.get(`http://localhost:8000/api/tinerary/${id}`)
-            const res = await axios.get(`https://mytinerary-backend-aybar.herokuapp.com/api/tinerary/${id}`)
-            // dispatch({ type: 'GET_ONE_TINERARY', payload: res.data.response })
+
+            const res = await mytineraryDB.get(`/tinerary/${id}`)
+
             return res
 
         }
@@ -28,8 +29,9 @@ const tineraryActions = {
     getIinerariesFromOneCity: (id) => {
 
         return async (dispatch, getState) => {
-            // const res = await axios.get(`http://localhost:8000/api/tineraries/${id}`)
-            const res = await axios.get(`https://mytinerary-backend-aybar.herokuapp.com/api/tineraries/${id}`)
+
+            const res = await mytineraryDB.get(`/tineraries/${id}`)
+
             dispatch({ type: 'GET_TINERARIES_FROM_CITY', payload: res.data.response })
 
         }
@@ -42,14 +44,7 @@ const tineraryActions = {
 
         return async (dispatch, getState) => {
 
-            // const res = await axios.put(`http://localhost:8000/api/tineraries/like/${id}`, {}, {
-
-            //     headers: {
-            //         'Authorization': 'Bearer ' + token
-            //     }
-            // })
-            const res = await axios.put(`https://mytinerary-backend-aybar.herokuapp.com/api/tineraries/like/${id}`, {}, {
-
+            const res = await mytineraryDB.put(`/tineraries/like/${id}`, {}, {
                 headers: {
                     'Authorization': 'Bearer ' + token
                 }

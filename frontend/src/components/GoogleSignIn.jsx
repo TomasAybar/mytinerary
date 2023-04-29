@@ -30,7 +30,7 @@ export default function GoogleSignIn() {
         }))
 
         // console.log(res)
-        
+
         res.data.success ?
             toast.success(`${res.data.message}`, { duration: 4500 })
             : toast.error(`${res.data.message}`, { duration: 4500 })
@@ -39,7 +39,7 @@ export default function GoogleSignIn() {
     useEffect(() => {
         /* global google */
         google.accounts.id.initialize({
-            client_id: '60710291903-kihnjrqu01bho3nmkhnfhu9p8595svno.apps.googleusercontent.com',
+            client_id: process.env.REACT_APP_GOOGLE_CLIENTID,
             callback: handleCallbackResponse
         });
 

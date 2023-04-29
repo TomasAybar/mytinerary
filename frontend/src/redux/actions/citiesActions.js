@@ -1,4 +1,4 @@
-import axios from "axios";
+import { mytineraryDB } from "../../api/config";
 
 const citiesActions = {
 
@@ -6,18 +6,20 @@ const citiesActions = {
     getCities: () => {
 
         return async (dispatch, getState) => {
-            // const res = await axios.get('http://localhost:8000/api/cities')
-            const res = await axios.get('https://mytinerary-backend-aybar.herokuapp.com/api/cities')
+
+            const res = await mytineraryDB.get('/cities')
+
             dispatch({ type: 'GET_CITIES', payload: res.data.response })
         }
-        
+
     },
 
     getOneCity: (id) => {
 
         return async (dispatch, getState) => {
-            // const res = await axios.get(`http://localhost:8000/api/cities/${id}`)
-            const res = await axios.get(`https://mytinerary-backend-aybar.herokuapp.com/api/cities/${id}`)
+
+            const res = await mytineraryDB.get(`/cities/${id}`)
+
             dispatch({ type: 'GET_ONE_CITY', payload: res.data.response })
 
         }
